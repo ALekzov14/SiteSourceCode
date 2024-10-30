@@ -2,18 +2,47 @@ import requests
 import time
 
 
-source = "Hi!\n\n"
-for char in source:
-    print(char, end='')
-    time.sleep(0.2)
+check = 'https://' #8
+
+def main():
+    source = "Hi!\n\n"
+    for char in source:
+        print(char, end='')
+        time.sleep(0.5)
 
 
-site = input("Enter the website address:")
-files = input("Enter the file name:")
+    while True:
+        site = input("[→] Enter the website address:")
+        if check in site:
+            print("",end='')
 
-response = requests.get(site).text
+        else:
+            print("[!] Incorrect website address! - Exit")
+            time.sleep(2)
+            break
 
-with open(f"{files}.html", "w", encoding="utf-8") as file:
-    file.write(response)
+        files = input("[→] Enter the file name:")
+        if files == ' ':
+            print("[!] Incorrect file name! - Exit")
+            time.sleep(2)
+            break
 
-print('The file was saved successfully')
+        else:
+            response = requests.get(site).text
+
+            with open(f"{files}.html", "w", encoding="utf-8") as file:
+                file.write(response)
+
+            print(f'[✓] The file {files} was saved successfully')
+
+            next = input("[?] Repeat the program?(y/n)")
+            if next == 'y':
+                continue
+            else:
+                print("End")
+                time.sleep(2)
+                break
+
+
+if __name__ == "__main__":
+    main()
