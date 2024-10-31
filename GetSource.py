@@ -18,13 +18,13 @@ def main():
 
         else:
             print("[!] Incorrect website address! - Exit")
-            time.sleep(2)
+            time.sleep(0.5)
             break
 
         files = input("[→] Enter the file name:")
         if files == ' ':
             print("[!] Incorrect file name! - Exit")
-            time.sleep(2)
+            time.sleep(0.5)
             break
 
         else:
